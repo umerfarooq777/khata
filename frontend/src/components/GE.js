@@ -19,14 +19,19 @@ import SnackbarC from './SnackbarC';
 
 
 export default function GE() {
-
-  const [fullname, setFullName] = useState({
-    fname: "",
-    lname: ""
-  });
-
+  // let record = [];
+  // const [record, setRecord] = useState([]);
 
   // setRecord(currentArray => [...record, newElement])
+  const [inputField , setInputField] = useState({
+    first_name: '',
+    last_name: '',
+    gmail: ''
+})
+
+
+
+
 
   const { addDocument:addDocument1, response:response1 } = useFirestore('Transactions')
   const { addDocument:addDocument2, response:response2 } = useFirestore('generalEntries')
@@ -40,7 +45,6 @@ export default function GE() {
 
 
 
-  const [record, setRecord] = useState([]);
 
   const [formError, setFormError] = useState(null)
   const [creating, setCreating] = useState(false)
@@ -101,44 +105,20 @@ export default function GE() {
 
 ////==================================================
 
+const inputsHandler = (e) =>{
+  setInputField( {[e.target.name]: e.target.value} )
+}
+
+const submitButton = (event) =>{
+  alert(inputField.first_name)
+  event.preventDefault();
+}
+
+
 const show = (event) => {
   // prevents the submit button from refreshing the page
   event.preventDefault();
-  console.log(fullname);
-};
-
-
-const inputEvent = (event) => {
-
-console.log(event.target.value);
-console.log(event.target.name);
-
-const value = event.target.value;
-const name = event.target.name;
-
-setFullName((preValue) => {
-  // console.log(preValue);
-  if(name === 'fname'){
-    return{
-      fname: value,
-      lname: preValue.lname,
-    };
-  }else if(name === 'lname'){
-    return{
-      fname: preValue.fname,
-      lname: value,
-    };
-  }
-  });
-
-
-};
-
-
-const handleSubmit1 = (event) => {
-  // prevents the submit button from refreshing the page
-  event.preventDefault();
-  alert("form submitted");
+  console.log(inputField);
 };
 
 
@@ -177,30 +157,44 @@ const handleSubmit1 = (event) => {
 
         <form>
         <div>
-          <h3>{fullname.fname}</h3>
-        </div>
-        <div>
-          <input
-            type="text"
-            name="name"
-            placeholder="First Name"
-            onChange={inputEvent}
-            value={fullname.fname}
-          />
-          <input
-          type="text"
-          name="name"
-          placeholder="Last Name"
-          onChange={inputEvent}
-          value={fullname.lname}
-        />
-        </div>
-        <div>
-          <button type="submit">Submit Contact</button>
+            <input 
+            type="text" 
+            name="first_name" 
+            onChange={inputsHandler} 
+            placeholder="First Name" 
+            value={inputField.first_name}/>
+
+            <br/>
+
+            <input 
+            type="text" 
+            name="last_name" 
+            onChange={inputsHandler} 
+            placeholder="Last Name" 
+            value={inputField.last_name}/>
+
+            <br/>
+
+            <input 
+            type="gmail" 
+            name="gmail" 
+            onChange={inputsHandler} 
+            placeholder="Gmail" 
+            value={inputField.gmail}/>
+
+            <br/>
+
+            <button onClick={submitButton}>Submit Now</button>
         </div>
       </form>
       </Paper>
     </Box>
+
+
+
+
+
+
 
   <Box className="box" sx={{ display: 'flex', flexWrap: 'wrap', '& > :not(style)': { m: 1 , width: 'auto', height: '100%', } }} >
       
@@ -314,13 +308,7 @@ const handleSubmit1 = (event) => {
                 <div>
                     {/* <InputLabel  id="demo-simple-select-standard-label"><h4 className='record-h4'>i3ilkwlkefewk </h4> </InputLabel> */}
                     
-                  {record.map(
-                    entry =>
-                    <div>
-                    <h4 className='record-h4'>{entry}</h4><br/>
-                    </div>
-                    )
-                  }
+                  
               </div>           
         
           </div>
