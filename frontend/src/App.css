@@ -9,3 +9,69 @@ font-size: medium;
 .home-dashboard{
   border: 3px solid red;
 }
+.header{
+  background: #0d6efd;
+}
+.add-records-cont{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.record-metadata{
+  margin: 0 auto;
+  width: 100%;
+background: pink;
+text-align: center;
+}
+.record{
+  /* background: pink; */
+  border-radius: 5px;
+  padding: 0 .5rem;
+  /* display: grid;
+  justify-content: center;
+  align-items: center; */
+}
+.record-dlt-icon{  
+  position: relative;
+  left: 37rem;
+  /* top: 1rem; */
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 1s;
+  /* margin: 1rem 0rem 0 0rem; */
+}
+.record-dlt-icon:hover{  
+  border: 1px solid white;
+  cursor: pointer;
+  transition: .25s;
+  /* margin: 1rem 0rem 0 0rem; */
+}
+.Debit{
+background: rgba(81, 172, 81, 0.77);
+color: aliceblue!important;
+}
+.Credit{
+background: rgba(193, 21, 21, 0.782);
+color: aliceblue!important;
+}
+.Debit h4,.Credit h4{  
+color: aliceblue!important;
+}
+.record-h4{
+}
+.record-h2{
+  
+}
+.record-p1{
+  position: relative;
+  bottom: 0;
+  
+color: blueviolet!important;
+}
+.record-p2{
+  color: aqua;
+  position: relative;
+  bottom: 1px;
+  left: 0;
+}

@@ -19,6 +19,8 @@ import TextFieldsIcon from '@mui/icons-material/TextFields';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import PaidIcon from '@mui/icons-material/Paid';
 import AvatarC from './components/AvatarC';
+import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined';
+
 import { Link } from "react-router-dom";
 import './sidebar.css'
 const drawerWidth = 240;
@@ -27,11 +29,11 @@ const Sidebar = () => {
         <>
             <CssBaseline />
             <AppBar position="fixed"  sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
-                <Toolbar style={{backgroundColor:"navy",display:'flex',justifyContent:'flex-start'}}>
-                <img src='/images/log.png' style={{objectFit:"fill"}} width='70' height='70'/>
+                <Toolbar style={{display:'flex',justifyContent:'flex-start'}} className="header">
+                {/* <img src='/images/log.png' style={{objectFit:"fill"}} width='70' height='70'/> */}
                     <Typography variant="h6" noWrap component="div">
                         
-                       <span style={{letterSpacing:"1px",marginLeft:"10px"}}>PERFECTLY BALANCED</span>
+                       <span style={{letterSpacing:"1px",marginLeft:"50px",fontSize:"2rem"}}>KHATA</span>
                     </Typography>
                     <div style={{marginLeft:"auto"}}>
                     <AvatarC />
@@ -50,7 +52,7 @@ const Sidebar = () => {
                                     <ListItemIcon>
                                         <HomeIcon />
                                     </ListItemIcon>
-                                    <ListItemText primary={'Home'} />
+                                    <ListItemText primary={'Dashboard'} />
                                 </ListItemButton>
                             </ListItem>
                         </Link>
@@ -67,7 +69,7 @@ const Sidebar = () => {
                                     <ListItemIcon>
                                         <AddCardIcon />
                                     </ListItemIcon>
-                                    <ListItemText primary={'Add Entries'} />
+                                    <ListItemText primary={'Add Records'} />
                                 </ListItemButton>
                             </ListItem>
                         </Link>
@@ -149,7 +151,20 @@ const Sidebar = () => {
                         </Link>
                     </List>
 
-
+                    <Divider />
+                    <List>
+                        <Link to='/Income-Statement' style={{color: "black",textDecoration: "none"}}  className={(navData) => (navData.isActive ? 'active' : '')}>
+                            <ListItem disablePadding>
+                                <ListItemButton>
+                                    <ListItemIcon>
+                                        {/* <PaidIcon /> */}
+                                        <GroupOutlinedIcon/>
+                                    </ListItemIcon>
+                                    <ListItemText primary={"Team"} />
+                                </ListItemButton>
+                            </ListItem>
+                        </Link>
+                    </List>
 
                 </Box>
             </Drawer>
